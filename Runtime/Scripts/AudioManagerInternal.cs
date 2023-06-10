@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -376,7 +376,8 @@ namespace JSAM
             for (int i = 0; i < musicHelpers.Count; i++)
             {
                 if (musicHelpers[i].AudioSource == null) return null; // Prevent issues when called during OnApplicationQuit
-                if (music.Files.Contains(musicHelpers[i].AudioSource.clip))
+                AudioSource musicSource = musicHelpers[i].AudioSource;
+                if (musicSource.isPlaying && music.Files.Contains(musicSource.clip))
                 {
                     if (t != null && music.spatialize)
                     {
